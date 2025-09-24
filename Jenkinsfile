@@ -10,15 +10,15 @@
         }
         stage('Upload to TestOps & Xray') {
      		 steps {
-		        dir('/Users/nhi.ly/Documents/Core/RepoKatalon/ci-samples-jenkin') {
+		        dir('/root/project') {
 		          sh '''
-		            docker run -t --rm \
-		              -v "$(pwd)/Reports":/katalon/report \
-		              -e PASSWORD=7024f183-ba93-40a5-bd94-426aa13f9446 \
-		              -e PROJECT_ID=1196082 \
-		              -e TYPE=katalon \
-		              -e REPORT_PATH=/katalon/report \
-		              -e PUSH_TO_XRAY=true \
+		            docker run -t --rm
+		              -v "$(pwd)/Reports":/katalon/report/*
+		              -e PASSWORD=7024f183-ba93-40a5-bd94-426aa13f9446
+		              -e PROJECT_ID=1196082
+		              -e TYPE=katalon 
+		              -e REPORT_PATH=/katalon/report/*
+		              -e PUSH_TO_XRAY=true
 		              katalonstudio/report-uploader:0.0.8
 		          '''
 		        }
